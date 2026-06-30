@@ -72,7 +72,9 @@ Hand these to the IT team along with:
 
 ## Status
 
-Live: home, biography ("La Vie", 6 chapters), archive (232 works) with faceted
-filter + detail pages, Swup page transitions + smooth scroll, SEO/JSON-LD, French
-locale + accessibility pass. Optional remaining: the secondary sections
-(Expositions / Publications / Actualités) and a formal RGAA audit.
+Complete. Six sections — Accueil (hero + "Œuvres en avant" block), La Vie
+(6 biography chapters), Œuvres (232 works, faceted filter + detail pages),
+Expositions, Actualités, Publications — with mobile nav, Swup page transitions +
+smooth scroll, SEO/JSON-LD, French locale and an accessibility pass. Remaining
+items are editorial (curator) touches and a formal RGAA audit — see
+[docs/IT-RUNBOOK.md](docs/IT-RUNBOOK.md).
