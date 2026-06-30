@@ -1,0 +1,94 @@
+// Generic pages (Expositions, Publications) + Actualités
+
+.page {
+  max-width: var(--wide);
+  margin-inline: auto;
+  padding: var(--space-l) var(--gutter);
+}
+
+.page__head { margin-bottom: var(--space-l); }
+
+.page__title {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: var(--step-2);
+}
+
+.page__body {
+  max-width: var(--content);
+  margin-inline: 0;
+  padding: 0;
+
+  h2 {
+    margin: var(--space-l) 0 var(--space-s);
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: var(--step-1);
+  }
+}
+
+// Expositions list
+.expo-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    padding: 0.55em 0;
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  strong {
+    margin-right: 0.5em;
+    color: var(--color-accent);
+    font-weight: 400;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+// Actualités — single article
+.article {
+  max-width: var(--content);
+  margin-inline: auto;
+  padding: var(--space-l) var(--gutter);
+
+  &__date {
+    margin: 0;
+    font-size: var(--step--1);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  &__title {
+    margin: 0.2em 0 0;
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: var(--step-2);
+  }
+
+  &__media {
+    margin: var(--space-l) 0;
+    img { width: 100%; }
+  }
+
+  &__back {
+    margin-top: var(--space-l);
+    color: var(--color-muted);
+  }
+}
+
+// Actualités — list (index.php as the posts page)
+.entry {
+  max-width: var(--content);
+  margin: 0 auto var(--space-l);
+
+  &__title {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: var(--step-1);
+
+    a { text-decoration: none; }
+  }
+}

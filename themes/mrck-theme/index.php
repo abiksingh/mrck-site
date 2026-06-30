@@ -10,6 +10,14 @@ defined( 'ABSPATH' ) || exit;
 get_header();
 ?>
 <section class="wrap">
+	<?php
+	if ( is_home() && ! is_front_page() && get_option( 'page_for_posts' ) ) :
+		?>
+		<header class="page__head" data-anim="reveal">
+			<h1 class="page__title"><?php echo esc_html( get_the_title( (int) get_option( 'page_for_posts' ) ) ); ?></h1>
+		</header>
+	<?php endif; ?>
+
 	<?php if ( have_posts() ) : ?>
 		<?php
 		while ( have_posts() ) :
