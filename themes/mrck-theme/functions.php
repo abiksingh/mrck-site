@@ -63,3 +63,12 @@ add_action( 'wp_enqueue_scripts', function () {
 		wp_enqueue_script_module( 'mrck-main', get_theme_file_uri( 'dist/' . $item['file'] ), [], MRCK_THEME_VERSION );
 	}
 } );
+
+/** Mark the active menu item for assistive technology (RGAA / WCAG 4.1.2). */
+add_filter( 'nav_menu_link_attributes', function ( $atts, $item ) {
+	$classes = (array) ( $item->classes ?? [] );
+	if ( array_intersect( [ 'current-menu-item', 'current_page_item', 'current-menu-parent' ], $classes ) ) {
+		$atts['aria-current'] = 'page';
+	}
+	return $atts;
+}, 10, 2 );

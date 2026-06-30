@@ -151,6 +151,11 @@ a {
   padding: var(--space-l) var(--gutter);
   border-top: 1px solid var(--color-line);
   color: var(--color-muted);
+
+  &__links {
+    margin-top: var(--space-s);
+    font-size: var(--step--1);
+  }
 }
 
 // --- Shared layout -----------------------------------------------------------
