@@ -69,6 +69,27 @@
     padding: 0;
 
     p { margin: 0 0 1em; }
+
+    p.has-year {
+      display: grid;
+      grid-template-columns: 4.5rem 1fr;
+      gap: var(--space-m);
+      margin-bottom: 0.7em;
+    }
+  }
+
+  &__year {
+    font-variant-numeric: tabular-nums;
+    font-size: var(--step--1);
+    color: var(--color-accent);
+    padding-top: 0.15em;
+  }
+
+  @media (max-width: 600px) {
+    &__intro p.has-year {
+      grid-template-columns: 1fr;
+      gap: 0.1rem;
+    }
   }
 
   &__gallery {

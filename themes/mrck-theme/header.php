@@ -20,7 +20,10 @@ defined( 'ABSPATH' ) || exit;
 	<a class="site-header__brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
 		<?php bloginfo( 'name' ); ?>
 	</a>
-	<nav class="site-nav" aria-label="<?php esc_attr_e( 'Menu principal', 'mrck' ); ?>">
+	<button class="site-header__toggle" aria-expanded="false" aria-controls="site-nav" aria-label="<?php esc_attr_e( 'Ouvrir le menu', 'mrck' ); ?>">
+		<span></span><span></span><span></span>
+	</button>
+	<nav class="site-nav" id="site-nav" aria-label="<?php esc_attr_e( 'Menu principal', 'mrck' ); ?>">
 		<?php
 		wp_nav_menu( [
 			'theme_location' => 'primary',

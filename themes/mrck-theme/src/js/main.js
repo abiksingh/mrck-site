@@ -49,7 +49,43 @@ function reveal(scope = document) {
   });
 }
 
+/** Wrap the leading year in biography chronology paragraphs for timeline styling. */
+function enhanceBiography(scope = document) {
+  scope.querySelectorAll('.chapitre__intro p').forEach((p) => {
+    if (p.__yeared) return;
+    const m = p.textContent.match(/^(\d{4}(?:[-–]\d{2,4})?)\s+([\s\S]*)/);
+    if (!m) return;
+    p.__yeared = true;
+    p.classList.add('has-year');
+    p.textContent = '';
+    const year = document.createElement('span');
+    year.className = 'chapitre__year';
+    year.textContent = m[1];
+    const event = document.createElement('span');
+    event.className = 'chapitre__event';
+    event.textContent = m[2];
+    p.append(year, event);
+  });
+}
+
 window.MRCK = { reveal };
+
+/** Mobile nav toggle. The header persists across Swup swaps, so bind once. */
+function initNav() {
+  const header = document.querySelector('.site-header');
+  const toggle = document.querySelector('.site-header__toggle');
+  if (!header || !toggle) return;
+  toggle.addEventListener('click', () => {
+    const open = header.classList.toggle('is-nav-open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  header.querySelectorAll('.site-nav a').forEach((a) =>
+    a.addEventListener('click', () => {
+      header.classList.remove('is-nav-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    })
+  );
+}
 
 /** Re-run after each Swup page swap: clean stale triggers, re-bind, re-measure. */
 function onView() {
@@ -57,6 +93,7 @@ function onView() {
     if (!t.trigger || !document.contains(t.trigger)) t.kill();
   });
   reveal();
+  enhanceBiography();
   initArchive();
   ScrollTrigger.refresh();
 }
@@ -70,5 +107,7 @@ function initSwup() {
 
 initSmoothScroll();
 reveal();
+enhanceBiography();
 initArchive();
+initNav();
 initSwup();
