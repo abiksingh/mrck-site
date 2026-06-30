@@ -33,4 +33,4 @@ defined( 'ABSPATH' ) || exit;
 	</nav>
 </header>
 
-<main id="main" class="site-main">
+<main id="main" class="site-main transition-main">
