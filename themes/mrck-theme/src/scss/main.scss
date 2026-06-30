@@ -80,10 +80,13 @@ a {
 
 .site-nav__list {
   display: flex;
-  gap: var(--space-m);
+  flex-wrap: wrap;
+  gap: var(--space-s) var(--space-m);
   margin: 0;
   padding: 0;
   list-style: none;
+
+  a { white-space: nowrap; }
 }
 
 .site-header__toggle {

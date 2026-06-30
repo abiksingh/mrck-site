@@ -25,6 +25,7 @@ require_once MRCK_ARCHIVE_DIR . 'includes/chapitres.php';
 require_once MRCK_ARCHIVE_DIR . 'includes/cli-import-vie.php';
 require_once MRCK_ARCHIVE_DIR . 'includes/seo.php';
 require_once MRCK_ARCHIVE_DIR . 'includes/blocks.php';
+require_once MRCK_ARCHIVE_DIR . 'includes/display.php';
 
 /**
  * Register the CPT + taxonomies on activation, then flush rewrite rules so the

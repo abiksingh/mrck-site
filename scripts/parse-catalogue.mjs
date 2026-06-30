@@ -114,7 +114,8 @@ function findImages(folderAbs, num, id) {
   const orig = collect(path.join(folderAbs, 'Originals'), 'Originals/');
   const vars = collect(path.join(folderAbs, 'Variations'), 'Variations/');
   const hit = (f) => variants.some((v) => f.base.includes(v));
-  const display = top.find(hit) || vars.find(hit) || orig.find(hit);
+  const byNum = num ? (f) => new RegExp('^' + num + '\\.').test(f.base) : () => false;
+  const display = top.find(hit) || vars.find(hit) || orig.find(hit) || top.find(byNum) || orig.find(byNum);
   const original = orig.find(hit);
   const out = [];
   if (display) out.push(display.name);
