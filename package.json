@@ -1,0 +1,17 @@
+{
+  "name": "mrck-site",
+  "private": true,
+  "description": "Marie-Renée Chevallier-Kervern — digital archive & catalogue raisonné (custom WordPress).",
+  "scripts": {
+    "setup": "npm install && npm --prefix themes/mrck-theme install",
+    "wp:start": "wp-env start",
+    "wp:stop": "wp-env stop",
+    "wp:clean": "wp-env clean all",
+    "wp:cli": "wp-env run cli wp",
+    "dev": "npm --prefix themes/mrck-theme run dev",
+    "build": "npm --prefix themes/mrck-theme run build"
+  },
+  "devDependencies": {
+    "@wordpress/env": "^10"
+  }
+}

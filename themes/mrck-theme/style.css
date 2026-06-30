@@ -1,0 +1,10 @@
+/*
+Theme Name:  MRCK — Marie-Renée Chevallier-Kervern
+Theme URI:   https://example.org/
+Author:      MRCK
+Description: Custom art-directed theme for the Marie-Renée Chevallier-Kervern digital archive. Server-rendered for SEO, animation-driven (Lenis + GSAP), accessibility-minded (RGAA). Front-end styles are compiled by Vite into /dist — this file only carries the theme header.
+Version:     0.1.0
+Requires at least: 6.5
+Requires PHP: 8.1
+Text Domain: mrck
+*/

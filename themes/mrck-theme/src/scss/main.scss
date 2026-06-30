@@ -1,0 +1,269 @@
+@use "tokens";
+@use "archive";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: var(--step-0);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+}
+
+// --- Accessibility helpers ---------------------------------------------------
+
+.screen-reader-text {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.skip-link:focus {
+  position: fixed;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 1000;
+  width: auto;
+  height: auto;
+  padding: 0.5rem 1rem;
+  clip-path: none;
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+
+// --- Header / footer ---------------------------------------------------------
+
+.site-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-m);
+  padding: var(--space-m) var(--gutter);
+
+  &__brand {
+    font-family: var(--font-serif);
+    font-size: var(--step-1);
+    text-decoration: none;
+  }
+}
+
+.site-nav__list {
+  display: flex;
+  gap: var(--space-m);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-main {
+  min-height: 60vh;
+}
+
+.site-footer {
+  margin-top: var(--space-xl);
+  padding: var(--space-l) var(--gutter);
+  border-top: 1px solid var(--color-line);
+  color: var(--color-muted);
+}
+
+// --- Shared layout -----------------------------------------------------------
+
+.wrap,
+.hero,
+.archive,
+.oeuvre {
+  max-width: var(--wide);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.prose {
+  max-width: var(--content);
+  margin-inline: auto;
+  padding: var(--space-l) var(--gutter);
+
+  p {
+    margin: 0 0 1em;
+  }
+}
+
+// --- Hero --------------------------------------------------------------------
+
+.hero {
+  padding-block: clamp(4rem, 18vh, 12rem);
+
+  &__eyebrow {
+    margin: 0;
+    font-size: var(--step--1);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  &__title {
+    margin: 0.2em 0;
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: var(--step-3);
+    line-height: 1.02;
+  }
+
+  &__lede {
+    max-width: 48ch;
+    font-size: var(--step-1);
+    color: var(--color-muted);
+  }
+
+  &__cta {
+    display: inline-block;
+    margin-top: var(--space-m);
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+  }
+}
+
+// --- Archive grid ------------------------------------------------------------
+
+.archive {
+  padding-block: var(--space-l);
+
+  &__title {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: var(--step-2);
+  }
+
+  &__count {
+    color: var(--color-muted);
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+  gap: var(--space-m);
+  margin: var(--space-l) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card {
+  &__link {
+    display: grid;
+    gap: var(--space-xs);
+    text-decoration: none;
+  }
+
+  &__media {
+    display: block;
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
+    background: rgba(0, 0, 0, 0.04);
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  &__link:hover &__img {
+    transform: scale(1.04);
+  }
+
+  &__title {
+    font-family: var(--font-serif);
+    font-size: var(--step-1);
+  }
+
+  &__year {
+    font-size: var(--step--1);
+    color: var(--color-muted);
+  }
+}
+
+// --- Single œuvre ------------------------------------------------------------
+
+.oeuvre {
+  padding-block: var(--space-l);
+
+  &__title {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: var(--step-2);
+  }
+
+  &__year {
+    margin-top: 0.25em;
+    color: var(--color-muted);
+  }
+
+  &__img {
+    width: 100%;
+    margin-block: var(--space-m);
+  }
+
+  &__meta {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 0.4rem var(--space-m);
+    margin-top: var(--space-l);
+    padding-top: var(--space-m);
+    border-top: 1px solid var(--color-line);
+
+    dt {
+      color: var(--color-muted);
+    }
+
+    dd {
+      margin: 0;
+    }
+  }
+
+  &__back {
+    margin-top: var(--space-l);
+  }
+}
+
+// --- Motion ------------------------------------------------------------------
+
+.js [data-anim="reveal"] {
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

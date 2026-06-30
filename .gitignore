@@ -1,0 +1,18 @@
+# Dependencies
+node_modules/
+vendor/
+
+# Build output (regenerated with `npm run build`; release zips include it)
+themes/mrck-theme/dist/
+
+# wp-env local overrides
+.wp-env.override.json
+
+# OS / editor
+.DS_Store
+*.log
+.idea/
+.vscode/
+
+# Raw source assets (originals — imported into WP media, not committed to git)
+source-images/

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/trunk/schemas/json/wp-env.json",
+  "phpVersion": "8.2",
+  "themes": [ "./themes/mrck-theme" ],
+  "plugins": [
+    "./plugins/mrck-archive",
+    "https://downloads.wordpress.org/plugin/secure-custom-fields.zip"
+  ],
+  "mappings": {
+    "wp-content/mrck-import": "./source-images"
+  },
+  "config": {
+    "WP_DEBUG": true,
+    "WP_DEBUG_LOG": true,
+    "WP_DEBUG_DISPLAY": false,
+    "WP_ENVIRONMENT_TYPE": "local"
+  },
+  "lifecycleScripts": {
+    "afterStart": "wp-env run cli wp theme activate mrck-theme && wp-env run cli wp rewrite structure '/%postname%/' --hard"
+  }
+}
