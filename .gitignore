@@ -16,3 +16,6 @@ themes/mrck-theme/dist/
 
 # Raw source assets (originals — imported into WP media, not committed to git)
 source-images/
+
+# Release zips (built on demand via scripts/package.sh)
+release/

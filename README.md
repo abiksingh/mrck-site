@@ -61,11 +61,18 @@ image `galerie`). The cover image is the standard featured image.
 
 ## Handover
 
-Deliverables are the two folders zipped — `mrck-archive` (plugin) and
-`mrck-theme` (theme, with a built `dist/`) — plus a content export and the docs
-in `docs/`. The IT team installs them on the IONOS WordPress like any theme/plugin.
+Run `bash scripts/package.sh` → `release/mrck-theme.zip` + `release/mrck-archive.zip`.
+Hand these to the IT team along with:
+
+- **[docs/IT-RUNBOOK.md](docs/IT-RUNBOOK.md)** — install, security hardening, performance, backups
+- **[docs/CLIENT-GUIDE.md](docs/CLIENT-GUIDE.md)** — how the editorial team adds works & edits the biography
+- **[PLUGINS.md](PLUGINS.md)** — the (all-free) plugin list
+- **[scripts/README.md](scripts/README.md)** — the data-extraction / import pipeline
+- a content snapshot (database + `wp-content/uploads`, or an All-in-One WP Migration package)
 
 ## Status
 
-Scaffold + content backbone + base templates + motion layer. Next: real images &
-importer, REST filter bar, custom narrative blocks, SEO/schema, RGAA & performance pass.
+Live: home, biography ("La Vie", 6 chapters), archive (232 works) with faceted
+filter + detail pages, Swup page transitions + smooth scroll, SEO/JSON-LD, French
+locale + accessibility pass. Optional remaining: the secondary sections
+(Expositions / Publications / Actualités) and a formal RGAA audit.
