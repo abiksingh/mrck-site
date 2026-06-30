@@ -148,6 +148,7 @@ class MRCK_Import_Command {
 					}
 					$attachment_id = $this->sideload_image( $path, $post_id );
 					if ( $attachment_id ) {
+						update_post_meta( $attachment_id, '_wp_attachment_image_alt', $row['title'] );
 						$gallery[] = $attachment_id;
 					}
 				}

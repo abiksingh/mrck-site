@@ -30,7 +30,7 @@ while ( have_posts() ) :
 		<div class="oeuvre__media" data-anim="reveal">
 			<?php
 			if ( has_post_thumbnail() ) {
-				the_post_thumbnail( 'oeuvre_full', [ 'class' => 'oeuvre__img', 'fetchpriority' => 'high' ] );
+				the_post_thumbnail( 'oeuvre_full', [ 'class' => 'oeuvre__img', 'fetchpriority' => 'high', 'alt' => the_title_attribute( [ 'echo' => false ] ) ] );
 			}
 			if ( ! empty( $gallery ) && is_array( $gallery ) ) {
 				foreach ( $gallery as $image ) {
@@ -43,7 +43,7 @@ while ( have_posts() ) :
 						printf(
 							'<img class="oeuvre__img" src="%s" alt="%s" loading="lazy">',
 							esc_url( $src ),
-							esc_attr( $alt )
+							esc_attr( $alt ?: get_the_title() )
 						);
 					}
 				}
