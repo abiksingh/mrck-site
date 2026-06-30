@@ -59,6 +59,7 @@ class MRCK_Import_Command {
 		$file       = $args[0];
 		$images_dir = isset( $assoc_args['images'] ) ? rtrim( $assoc_args['images'], '/' ) : '';
 		$dry_run    = isset( $assoc_args['dry-run'] );
+		$force_imgs = isset( $assoc_args['force-images'] );
 
 		if ( ! file_exists( $file ) ) {
 			WP_CLI::error( "CSV not found: {$file}" );
@@ -136,7 +137,8 @@ class MRCK_Import_Command {
 				}
 			}
 
-			if ( ! empty( $row['images'] ) && $images_dir ) {
+			$has_images = $existing && has_post_thumbnail( $post_id );
+			if ( ! empty( $row['images'] ) && $images_dir && ( $force_imgs || ! $has_images ) ) {
 				$gallery = [];
 				foreach ( array_filter( array_map( 'trim', explode( ';', $row['images'] ) ) ) as $filename ) {
 					$path = $images_dir . '/' . $filename;
@@ -173,25 +175,15 @@ class MRCK_Import_Command {
 	 * works that happen to share a title (e.g. several "Autoportrait") would merge.
 	 */
 	private function find_existing( array $row ): int {
+		$args = [ 'post_type' => 'oeuvre', 'post_status' => 'any', 'fields' => 'ids', 'posts_per_page' => 1 ];
 		if ( ! empty( $row['numero_inventaire'] ) ) {
-			$ids = get_posts( [
-				'post_type'      => 'oeuvre',
-				'post_status'    => 'any',
-				'meta_key'       => 'numero_inventaire',
-				'meta_value'     => $row['numero_inventaire'],
-				'fields'         => 'ids',
-				'posts_per_page' => 1,
-			] );
-			return $ids ? (int) $ids[0] : 0;
+			// Match inventory AND title: the source occasionally reuses one catalogue
+			// number for several distinct works, which must remain separate records.
+			$args['meta_key']   = 'numero_inventaire';
+			$args['meta_value'] = $row['numero_inventaire'];
 		}
-		// No inventory number — fall back to exact title.
-		$ids = get_posts( [
-			'post_type'      => 'oeuvre',
-			'post_status'    => 'any',
-			'title'          => $row['title'],
-			'fields'         => 'ids',
-			'posts_per_page' => 1,
-		] );
+		$args['title'] = $row['title'];
+		$ids = get_posts( $args );
 		return $ids ? (int) $ids[0] : 0;
 	}
 
