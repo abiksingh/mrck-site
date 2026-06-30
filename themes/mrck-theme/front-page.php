@@ -27,7 +27,7 @@ if ( have_posts() ) :
 		the_post();
 		if ( trim( (string) get_the_content() ) !== '' ) :
 			?>
-			<section class="prose" data-anim="reveal"><?php the_content(); ?></section>
+			<div class="home-content"><?php the_content(); ?></div>
 			<?php
 		endif;
 	endwhile;

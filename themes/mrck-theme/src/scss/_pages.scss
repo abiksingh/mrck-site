@@ -47,6 +47,20 @@
   }
 }
 
+// "Œuvres en avant" block
+.featured {
+  max-width: var(--wide);
+  margin: var(--space-xl) auto 0;
+  padding-inline: var(--gutter);
+
+  &__title {
+    margin: 0 0 var(--space-l);
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: var(--step-2);
+  }
+}
+
 // Actualités — single article
 .article {
   max-width: var(--content);
