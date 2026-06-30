@@ -1,0 +1,102 @@
+// Biography ("La Vie")
+
+.vie {
+  max-width: var(--wide);
+  margin-inline: auto;
+  padding: var(--space-l) var(--gutter);
+}
+
+.vie__head {
+  max-width: 60ch;
+  margin-bottom: var(--space-xl);
+
+  .vie__eyebrow {
+    margin: 0;
+    font-size: var(--step--1);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  .vie__title {
+    margin: 0.2em 0;
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: var(--step-3);
+    line-height: 1.02;
+  }
+
+  .vie__lede {
+    max-width: 46ch;
+    font-size: var(--step-1);
+    color: var(--color-muted);
+  }
+}
+
+.chapitre {
+  margin-bottom: var(--space-xl);
+
+  &__head {
+    display: grid;
+    gap: 0.2rem;
+    margin-bottom: var(--space-m);
+    padding-bottom: var(--space-s);
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  &__num {
+    font-size: var(--step--1);
+    letter-spacing: 0.15em;
+    color: var(--color-accent);
+  }
+
+  &__title {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: var(--step-2);
+  }
+
+  &__sub {
+    margin: 0;
+    color: var(--color-muted);
+    font-style: italic;
+  }
+
+  &__intro {
+    max-width: var(--content);
+    margin-inline: 0;
+    padding: 0;
+
+    p { margin: 0 0 1em; }
+  }
+
+  &__gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr));
+    gap: var(--space-m);
+    margin-top: var(--space-l);
+  }
+
+  &__fig {
+    margin: 0;
+
+    img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      background: rgba(0, 0, 0, 0.04);
+    }
+
+    figcaption {
+      margin-top: 0.5rem;
+      font-size: var(--step--1);
+      line-height: 1.4;
+      color: var(--color-muted);
+    }
+  }
+}
+
+.vie__cta {
+  margin-top: var(--space-xl);
+}
